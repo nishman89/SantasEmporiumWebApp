@@ -1,0 +1,36 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* Add holiday colors */
+.navbar {
+    background-color: #B22234; /* red */
+}
+
+.nav-link {
+    color: #FFF; /* white */
+}
+
+    .nav-link:hover {
+        color: #EEE; /* light grey */
+    }
+
+/* Add holiday fonts */
+.navbar-brand {
+    font-family: 'Great Vibes', cursive;
+}
