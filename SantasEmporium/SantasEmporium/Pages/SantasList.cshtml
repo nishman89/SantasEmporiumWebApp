@@ -1,0 +1,75 @@
+﻿@page
+@using SantasEmporium.Models
+@model SantasEmporium.Pages.SantasListModel
+@{
+    ViewData["Title"] = "Santa's List";
+}
+<h1>Santa's List</h1>
+<form method="post" class="card p-3">
+    <div class="row">
+        <div asp-validation-summary="All"></div>
+    </div>
+    <div class="form-group mb-0 align-middle">
+        <h3 class="text-lg-center">Add Recipients</h3>
+        <table class="table mt-5">
+
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">Name</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Nice</th>
+                    <th scope="col">Present</th>
+                    <th scope="col">Add</th>
+                </tr>
+            </thead>
+            <tr class="text-center">
+                <td>
+                    <input asp-for="NewRecipient.Name" class="mr-5"/>
+                </td>
+                <td>
+                    <input asp-for="NewRecipient.Location" class="mr-5"/>
+                </td>
+                <td>
+                    <input class="form-check-input" asp-for="NewRecipient.IsNice">
+                </td>
+                <td>
+                    <input asp-for="NewRecipient.Present" class="mr-5"/>
+                </td>
+                <td>
+                    <button class="btn btn-primary"  method="post">Add</button>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</form>
+<table class="table mt-5">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Is Nice</th>
+            <th scope="col">Present</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    @foreach (var recipeient in Model.recipients)
+    {
+        <tr>
+            <td>@recipeient.Name</td>
+            <td>@recipeient.Location</td>
+            <td>@recipeient.IsNice</td>
+            <td>@recipeient.Present</td>
+            <td>
+                
+                <form method="post" asp-page-handler="Delete" asp-route-id="@recipeient.Id">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
